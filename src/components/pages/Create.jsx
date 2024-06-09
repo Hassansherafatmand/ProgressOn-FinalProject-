@@ -9,38 +9,62 @@ import {
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 // import { useState } from "react";
 import InputFileUpload from "../InputFileUpload";
-// import { useNavigate } from "react-router-dom";
-import { useState, useNavigate } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Create = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [category, setCategory] = useState("front-end");
+  const [imageUrl, setImageUrl] = useState("");
+
+  //Get the Current date
+
+  const currentDate = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "2-digit",
+    year: "numeric",
+  });
+
+  //Error handling
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
-  const [category, setCategory] = useState("front-end");
+  const [imageError, setImageError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     //rest the error values
     setTitleError(false);
     setDetailsError(false);
+    setImageError(false);
 
     // check for errror
     if (title == "") {
       setTitleError(true);
     }
+
     if (details == "") {
       setDetailsError(true);
     }
+    if (imageUrl == "") {
+      setImageError(true);
+    }
+
     if (title && details) {
-      console.log(title, details, category);
+      console.log(title, details, category, imageUrl);
       // send post request to add data to db.json every time that we submit the form
       fetch("http://localhost:8000/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, details, category }),
+        body: JSON.stringify({
+          title,
+          details,
+          category,
+          currentDate,
+          imageUrl,
+        }),
       }).then(() => navigate("/"));
     }
   };
@@ -83,7 +107,16 @@ const Create = () => {
           <InputFileUpload />
         </FormControl>
 
-        {/* radio buttons */}
+        {/************************* radio buttons ************************/}
+        <TextField
+          onChange={(e) => setImageUrl(e.target.value)} // Handle image URL input
+          label="Image URL" // Label for image URL input field
+          variant="outlined"
+          color="primary"
+          fullWidth
+          margin="normal"
+          error={imageError}
+        />
         <Container>
           <FormControl sx={{ margin: "16px" }}>
             <FormLabel>Work Experiences</FormLabel>
@@ -92,19 +125,19 @@ const Create = () => {
               onChange={(e) => setCategory(e.target.value)}
             >
               <FormControlLabel
-                value="front-end"
+                value="web-design"
                 control={<Radio />}
-                label="Front-end"
+                label="Web Design"
               />
               <FormControlLabel
-                value="back-end"
+                value="app-design"
                 control={<Radio />}
-                label="Back-end"
+                label="App Design"
               />
               <FormControlLabel
-                value="graphics"
+                value="graphic-design"
                 control={<Radio />}
-                label="Graphics"
+                label="Graphic Design"
               />
             </RadioGroup>
           </FormControl>

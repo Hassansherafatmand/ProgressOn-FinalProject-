@@ -1,89 +1,140 @@
-import { Box, Container, Drawer, Typography } from "@mui/material";
-import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
-import { useState } from "react";
-import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import { AddCircleOutline, SubjectOutlined } from "@mui/icons-material";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Container,
+  Drawer,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@mui/material";
+import {
+  AddCircleOutline,
+  SubjectOutlined,
+  MenuOpen as MenuOpenIcon,
+  AddHomeOutlined,
+} from "@mui/icons-material";
+import { useNavigate, useLocation } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+// Import the theme object from your Them.jsx file
+import theme from "../Theme";
+
+const drawerWidth = 240;
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
+
+const CustomDrawer = styled(({ miniVariant, ...other }) => (
+  <Drawer {...other} />
+))(({ miniVariant }) => ({
+  width: miniVariant ? 64 : drawerWidth,
+  flexShrink: 0,
+  "& .MuiDrawer-paper": {
+    width: miniVariant ? 64 : drawerWidth,
+    boxSizing: "border-box",
+    background: "#323232",
+  },
+}));
+
+const ActiveListItem = styled(ListItem)(({ theme }) => ({
+  "&.Mui-selected": {
+    backgroundColor: theme.palette.action.selected,
+    "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+      color: theme.palette.text.dark, // Dark text color when selected
+    },
+  },
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+    "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+      color: theme.palette.text.dark, // Dark text color on hover
+    },
+    "& .MuiListItemIcon-root": {
+      color: theme.palette.text.dark, // Dark text color for ListItemIcon on hover
+    },
+  },
+}));
 
 const Layout = ({ children }) => {
-  //Defining the links
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isMobile = useMediaQuery("(max-width:640px)");
+  const [miniVariant, setMiniVariant] = useState(false);
+
+  // Automatically set miniVariant based on screen size
+  useEffect(() => {
+    setMiniVariant(isMobile);
+  }, [isMobile]);
+
   const menuItems = [
     {
+      text: "Home ",
+      icon: <AddHomeOutlined color="primary" />,
+      path: "/",
+    },
+    {
       text: "My Projects",
-      icon: <SubjectOutlined color="secondary" />,
+      icon: <SubjectOutlined color="primary" />,
       path: "/projects",
     },
     {
       text: "Create Project",
-      icon: <AddCircleOutline color="secondary" />,
-      path: "/creats",
+      icon: <AddCircleOutline color="primary" />,
+      path: "/create",
     },
   ];
 
-  //Toggle
-  const [miniVariant, setMiniVariant] = useState(false);
   const toggleMiniVariant = () => {
     setMiniVariant(!miniVariant);
   };
+
   return (
-    <Box sx={{ display: "flex", background: "#f9f9f9" }}>
-      {/* appbar */}
-
-      {/* side drwaer */}
-      <Drawer
-        sx={{
-          width: miniVariant ? 64 : 240,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: miniVariant ? 64 : 240,
-            boxSizing: "border-box",
-            background: "#f0f0f0",
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Container>
-          <Typography variant="h4">Navigation</Typography>
-        </Container>
-
-        {/* List Items */}
-        <List>
-          <ListItemIcon
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              transformOrigin: "top right",
-              transform: "scale(1.5)",
-            }}
+    <Box
+      sx={{
+        display: "flex",
+        background: theme.palette.background.default,
+      }}
+    >
+      <CustomDrawer variant="permanent" anchor="left" miniVariant={miniVariant}>
+        <DrawerHeader>
+          <MenuOpenIcon
+            color="secondary"
             onClick={toggleMiniVariant}
-          >
-            <MenuOpenIcon
-              color="secondary"
-              primary={miniVariant ? "Open" : "Close"}
-            />
-          </ListItemIcon>
+            sx={{ cursor: "pointer" }}
+          />
+        </DrawerHeader>
+        <Container>
+          <Typography variant="h4">Logo</Typography>
+        </Container>
+        <List>
           {menuItems.map((item) => (
-            <ListItem
+            <ActiveListItem
               button
               key={item.text}
-              onClick={(e) => console.log("youclicked me")}
+              selected={location.pathname === item.path}
+              onClick={() => navigate(item.path)}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text}> </ListItemText>
-            </ListItem>
+              <ListItemText primary={item.text} />
+            </ActiveListItem>
           ))}
         </List>
-        <List></List>
-      </Drawer>
-      {/* <Box sx={{ width: "100%" }}>{children}</Box> */}
-      <Container style={{ backgroundColor: "#f9f9f9", width: "100%" }}>
-        {children}
-      </Container>
-      {/* <div style={{ backgroundColor: "#f9f9f9", width: "100%" }}>
-        {children}
-      </div> */}
+      </CustomDrawer>
+      {children}
     </Box>
   );
 };
 
 export default Layout;
+
+/**
+ * Make it professional responsive best approchae and best standard.
+ *
+ */

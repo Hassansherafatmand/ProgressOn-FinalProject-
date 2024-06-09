@@ -1,52 +1,52 @@
 {
   "projects": [
     {
-      "id": "1",
-      "title": "PHP Website Development",
+      "id": "de5f",
+      "title": "Figma UI Design System",
+      "details": "Created a comprehensive UI design system using Figma for a company's brand identity. Designed reusable components, established design guidelines, and ensured consistency across all digital platforms.",
+      "category": "app-design",
+      "currentDate": "March 12, 2024",
+      "imageUrl": "https://framerusercontent.com/images/0bo5ZBG3p96FXgLXKT5WJI3Kz8.png"
+    },
+    {
+      "id": "4c37",
+      "title": "PHP Application",
       "details": "Developed a dynamic website using PHP, MySQL, and Laravel framework. Implemented user authentication, database operations, and responsive front-end design.",
-      "category": "back-end"
+      "category": "web-design",
+      "currentDate": "June 06, 2024",
+      "imageUrl": "https://framerusercontent.com/images/htUfQ6jwPHeH9IyeNe2LE8FFzE.png"
     },
     {
-      "id": "2",
-      "title": "Figma UI Design",
-      "details": "Created high-fidelity UI designs for a mobile application using Figma. Collaborated with the development team to ensure design feasibility and consistency.",
-      "category": "front-end"
+      "id": "92b8",
+      "title": "E-commerce Website (ReactJS & NodeJS)",
+      "details": "Built a full-stack e-commerce platform using ReactJS on the front-end and NodeJS with Express for the back-end. Integrated payment processing and implemented user accounts and shopping cart functionalities.",
+      "category": "app-design",
+      "currentDate": "May 15, 2024",
+      "imageUrl": "https://framerusercontent.com/images/htUfQ6jwPHeH9IyeNe2LE8FFzE.png"
     },
     {
-      "id": "3",
-      "title": "Adobe XD Prototype",
-      "details": "Designed and prototyped a web application using Adobe XD. Conducted user testing sessions to gather feedback and iteratively improve the user experience.",
-      "category": "design"
+      "id": "92b2",
+      "title": "E-commerce Website (ReactJS & NodeJS)",
+      "details": "Built a full-stack e-commerce platform using ReactJS on the front-end and NodeJS with Express for the back-end. Integrated payment processing and implemented user accounts and shopping cart functionalities.",
+      "category": "web-design",
+      "currentDate": "May 15, 2024",
+      "imageUrl": "https://framerusercontent.com/images/YyEfCwjF3MtSe9ppYVGxCriKaw.png"
     },
     {
-      "id": "4",
-      "title": "React SPA Development",
-      "details": "Built a single-page application (SPA) using React.js. Implemented state management with Redux and integrated with external APIs for data fetching.",
-      "category": "front-end"
+      "id": "1f23",
+      "title": "Android Mobile App (Kotlin)",
+      "details": "Developed a native Android application using Kotlin for a fitness tracking service. Implemented features for user registration, activity tracking, data visualization, and integration with wearable devices.",
+      "category": "graphic-design",
+      "currentDate": "April 02, 2024",
+      "imageUrl": "https://framerusercontent.com/images/kSphEzCfJhB68JIhPVGlAQN9Cr0.png"
     },
     {
-      "id": "5",
-      "title": "JavaScript Game Development",
-      "details": "Developed a 2D platformer game using vanilla JavaScript and HTML5 Canvas. Implemented game mechanics, animations, and level design.",
-      "category": "front-end"
-    },
-    {
-      "id": "6",
-      "title": "Node.js API Development",
-      "details": "Created RESTful APIs using Node.js and Express.js framework. Integrated with MongoDB for data storage and implemented authentication and authorization.",
-      "category": "back-end"
-    },
-    {
-      "id": "7",
-      "title": "Responsive CSS Layout",
-      "details": "Designed and implemented a responsive website layout using CSS Flexbox and Grid. Ensured cross-browser compatibility and optimized for various screen sizes.",
-      "category": "front-end"
-    },
-    {
-      "id": "f20b",
-      "title": "CV Application",
-      "details": "jkawjdkajwdaw dfaw fawfawfwd",
-      "category": "back-end"
+      "id": "7b1a",
+      "title": "API Development with NodeJS & MongoDB",
+      "details": "Developed a RESTful API using NodeJS and Express framework to provide data access for a mobile application. Implemented user authentication and authorization mechanisms. Utilized MongoDB for efficient data storage.",
+      "category": "web-design",
+      "currentDate": "February 04, 2024",
+      "imageUrl": "https://framerusercontent.com/images/EV7KzjNqgyE9Ql8WpzJaVEntS7o.png"
     }
   ]
 }

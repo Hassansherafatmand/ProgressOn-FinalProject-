@@ -3,8 +3,6 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
-import { useState } from "react";
-
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -18,37 +16,21 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const InputFileUpload = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = async (event) => {
+  const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       console.log("Selected file:", file);
-
-      const formData = new FormData();
-      formData.append("file", file);
-
-      try {
-        const response = await axios.post(
-          "http://localhost:8080/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        console.log("File uploaded successfully:", response.data);
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
+      // You can add additional logic here to handle the file,
+      // such as uploading it to a server or displaying a preview.
     }
   };
 
   return (
     <Button
       component="label"
+      role={undefined}
       variant="contained"
+      tabIndex={-1}
       startIcon={<CloudUploadIcon />}
     >
       Upload file

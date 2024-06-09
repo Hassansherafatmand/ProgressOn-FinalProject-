@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Adjust this path to a dedicated folder OUTSIDE your source code directory
-const uploadDir = path.join(__dirname, "./src/assets");
+const uploadDir = path.join(__dirname, "public/uploads");
 
 // Create the upload directory if it doesn't exist (with error handling)
 if (!fs.existsSync(uploadDir)) {

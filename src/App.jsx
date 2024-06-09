@@ -1,48 +1,30 @@
 // src/App.jsx
 
 import React from "react";
-import { Container, Grid, Paper, Typography } from "@mui/material";
-
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Projects from "./components/pages/Projects";
 import Create from "./components/pages/Create";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main_content from "./components/Main_content";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#08C671",
-      dark: "#1E9961", // Example dark shade of primary color
-    },
-    secondary: {
-      main: "#1E9961",
-    },
-    background: {
-      default: "#f9f9",
-    },
-  },
-  typography: {
-    fontFamily: "Quicksand",
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
-    fontWeightBold: 700,
-  },
-});
+import theme from "./Theme";
+import DisplayProject from "./components/pages/DisplayPrject";
+import IntroProjects from "./components/sections/IntroProjects";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Router>
-        {/* Wrap the entire application with Router */}
+        {/* Wrapped the entire application with Router */}
         <Layout>
           <Routes>
-            {/* Use Routes for route definitions */}
             <Route exact path="/" element={<Main_content />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/create" element={<Create />} />
+            <Route path="/displayProject/:id" element={<DisplayProject />} />
+            <Route path="/IntroProjects" element={<IntroProjects />} />{" "}
+            {/* Add this route */}
           </Routes>
         </Layout>
       </Router>
