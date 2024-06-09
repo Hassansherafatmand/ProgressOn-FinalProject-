@@ -8,7 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # Final_Project
 # ProgressOn-FinalProject-
-I## Week 2: Basic Layout and Routing
+## Week 2: Basic Layout and Routing
 
 - Created the basic layout of the application.
 - Implemented routing with `react-router-dom` to navigate between different pages.
